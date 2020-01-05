@@ -1,15 +1,67 @@
-import Vue from "Vue";
-import Router from "vue-router";
-import Home from "./components/Home";
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from './pages/Home'
+import Index from './pages/Index'
+import Product from './pages/Product'
+import Detail from './pages/Detail'
+import Cart from './pages/Cart'
+import Order from './pages/Order'
+import OrderConfirm from './pages/OrderConfirm'
+import OrderList from './pages/OrderList'
+import OrderPayment from './pages/OrderPayment'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: "/Home",
-      name: "Home",
-      commponent: Home
+      path: '/',
+      name: 'Home',
+      commponent: Home,
+      chilren: [
+        {
+          path: '/index',
+          name: 'Index',
+          component: Index
+        },
+        {
+          path: '/product/:id',
+          name: 'Product',
+          component: Product
+        },
+        {
+          path: '/detail/:id',
+          name: 'Detail',
+          component: Detail
+        }
+      ]
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order,
+      children: [
+        {
+          path: '/list',
+          name: 'OrderList',
+          component: OrderList
+        },
+        {
+          path: '/confirm',
+          name: 'OrderConfirm',
+          component: OrderConfirm
+        },
+        {
+          path: '/pay',
+          name: 'OrderPayment',
+          component: OrderPayment
+        }
+      ]
     }
   ]
-});
+})

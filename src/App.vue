@@ -7,7 +7,7 @@
 <script>
 //import jsonp from "jsonp";
 export default {
-  name: "app",
+  name: "App",
   components: {}
 };
 </script>

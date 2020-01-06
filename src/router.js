@@ -17,12 +17,12 @@ export default new VueRouter({
     {
       path: '/',
       name: 'Home',
-      commponent: Home,
+      component: Home,
       redirect: '/index',
       children: [
         {
           path: '/index',
-          name: 'Index',
+          name: 'index',
           component: Index
         },
         {

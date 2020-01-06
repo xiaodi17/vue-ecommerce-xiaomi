@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Home from './pages/Home'
 import Index from './pages/Index'
 import Product from './pages/Product'
@@ -10,15 +10,16 @@ import OrderConfirm from './pages/OrderConfirm'
 import OrderList from './pages/OrderList'
 import OrderPayment from './pages/OrderPayment'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   routes: [
     {
       path: '/',
       name: 'Home',
       commponent: Home,
-      chilren: [
+      redirect: '/index',
+      children: [
         {
           path: '/index',
           name: 'Index',

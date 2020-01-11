@@ -8,9 +8,11 @@
           <a href="javascript:;">Cloud Service</a>
         </div>
         <div class="topbar-user">
-          <a href="javascript:;">Login</a>
-          <a href="javascript:;">Sign up</a>
-          <a href="javascript:;" class="my-cart"><span class="icon-cart"></span>Shopping Cart</a>
+          <a href="javascript:;" v-if="username">{{ username }}</a>
+          <a href="javascript:;" v-if="!username" @click="login">SIGN IN</a>
+          <a href="javascript:;" v-if="!username">SIGN UP</a>
+          <a href="javascript:;" v-if="username">My Order</a>
+          <a href="javascript:;" class="my-cart" @click="goToCart"><span class="icon-cart"></span>Shopping Cart</a>
         </div>
       </div>
     </div>
@@ -24,58 +26,13 @@
             <span>Mi Phones</span>
             <div class="children">
               <ul>
-                <li class="product">
-                  <a href="" target="_blank">
+                <li class="product" v-for="(item, index) in phoneList" :key="index">
+                  <a :href="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
-                      <img src="https://i01.appmifile.com/webfile/globalimg/Mandy/mi9-t-pro-red800.png?width=140&height=140" alt="" />
+                      <img :src="item.mainImage" :alt="item.subtitle" />
                     </div>
-                    <div class="pro-name">Mi 9T Pro</div>
-                    <div class="pro-price">$900</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://i01.appmifile.com/webfile/globalimg/Mandy/mi9-t-pro-red800.png?width=140&height=140" alt="" />
-                    </div>
-                    <div class="pro-name">Mi 9T Pro</div>
-                    <div class="pro-price">$900</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://i01.appmifile.com/webfile/globalimg/Mandy/mi9-t-pro-red800.png?width=140&height=140" alt="" />
-                    </div>
-                    <div class="pro-name">Mi 9T Pro</div>
-                    <div class="pro-price">$900</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://i01.appmifile.com/webfile/globalimg/Mandy/mi9-t-pro-red800.png?width=140&height=140" alt="" />
-                    </div>
-                    <div class="pro-name">Mi 9T Pro</div>
-                    <div class="pro-price">$900</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://i01.appmifile.com/webfile/globalimg/Mandy/mi9-t-pro-red800.png?width=140&height=140" alt="" />
-                    </div>
-                    <div class="pro-name">Mi 9T Pro</div>
-                    <div class="pro-price">$900</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://i01.appmifile.com/webfile/globalimg/Mandy/mi9-t-pro-red800.png?width=140&height=140" alt="" />
-                    </div>
-                    <div class="pro-name">Mi 9T Pro</div>
-                    <div class="pro-price">$900</div>
+                    <div class="pro-name">{{ item.name }}</div>
+                    <div class="pro-price">{{ item.price | currency }}</div>
                   </a>
                 </li>
               </ul>
@@ -87,7 +44,64 @@
           </div>
           <div class="item-menu">
             <span>Mi TV</span>
-            <div class="children"></div>
+            <div class="children">
+              <ul>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img src="/imgs/nav-img/nav-3-1.jpg" alt="" />
+                    </div>
+                    <div class="pro-name">小米壁画电视 65英寸</div>
+                    <div class="pro-price">6999元</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img src="/imgs/nav-img/nav-3-2.jpg" alt="" />
+                    </div>
+                    <div class="pro-name">小米全面屏电视E55A</div>
+                    <div class="pro-price">1999元</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img src="/imgs/nav-img/nav-3-3.png" alt="" />
+                    </div>
+                    <div class="pro-name">小米电视4A 32英寸</div>
+                    <div class="pro-price">699元</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img src="/imgs/nav-img/nav-3-4.jpg" alt="" />
+                    </div>
+                    <div class="pro-name">小米电视4A 55英寸</div>
+                    <div class="pro-price">1799元</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img src="/imgs/nav-img/nav-3-5.jpg" alt="" />
+                    </div>
+                    <div class="pro-name">小米电视4A 65英寸</div>
+                    <div class="pro-price">2699元</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img src="/imgs/nav-img/nav-3-6.png" alt="" />
+                    </div>
+                    <div class="pro-name">查看全部</div>
+                    <div class="pro-price">查看全部</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="header-search">
@@ -102,7 +116,43 @@
 </template>
 <script>
 export default {
-  name: 'NavHeader'
+  name: 'NavHeader',
+  data() {
+    return {
+      username: 'Jack',
+      phoneList: []
+    }
+  },
+  filters: {
+    currency(val) {
+      if (!val) return '0.00'
+      return '￥' + val.toFixed(2) + '元'
+    }
+  },
+  mounted() {
+    this.getProductList()
+  },
+  methods: {
+    login() {
+      this.$router.push('/login')
+    },
+    getProductList() {
+      this.axios
+        .get('/products', {
+          params: {
+            categoryId: '100012'
+          }
+        })
+        .then(res => {
+          if (res.list.length > 6) {
+            this.phoneList = res.list.slice(0, 6)
+          }
+        })
+    },
+    goToCart() {
+      this.$router.push('/cart')
+    }
+  }
 }
 </script>
 <style lang="scss">

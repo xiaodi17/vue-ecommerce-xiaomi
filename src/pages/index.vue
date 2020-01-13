@@ -2,9 +2,47 @@
   <div class="index">
     <div class="container">
       <div class="swiper-box">
+        <div class="nav-menu">
+          <ul class="menu-wrap">
+            <li class="menu-item">
+              <a href="javascript:;">Mi Phones</a>
+              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">POCOPHONE</a>
+              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Redmi Phones</a>
+              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Mi TV</a>
+              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Smart Devices</a>
+              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Electronics Applications</a>
+              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Laptop Computers</a>
+              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">All Products</a>
+              <div class="children"></div>
+            </li>
+          </ul>
+        </div>
         <swiper :options="swiperOption">
           <swiper-slide v-for="(item, index) in slideList" :key="index">
-            <a :href="'/#/product/' + item.id"><img :src="item.img"/></a>
+            <a :href="'/#/product/' + item.id">
+              <img :src="item.img" />
+            </a>
           </swiper-slide>
           <!-- Optional controls -->
           <div class="swiper-pagination" slot="pagination"></div>
@@ -76,9 +114,46 @@ export default {
 }
 </script>
 <style lang="scss">
+@import './../assets/scss/mixin.scss';
+@import './../assets/scss/config.scss';
 .index {
   .swiper-box {
+    .nav-menu {
+      position: absolute;
+      width: 264px;
+      height: 451px;
+      z-index: 9;
+      padding: 26px, 0;
+      background-color: #55585a7a;
+      box-sizing: border-box;
+      .menu-wrap {
+        .menu-item {
+          height: 55px;
+          line-height: 55px;
+          a {
+            position: relative;
+            display: block;
+            font-size: 16px;
+            color: #ffffff;
+            padding-left: 30px;
+            &:after {
+              position: absolute;
+              right: 30px;
+              top: 17.5px;
+              content: '';
+              @include bgImg(10px, 15px, '/imgs/icon-arrow.png');
+            }
+          }
+          &:hover {
+            background-color: $colorA;
+          }
+        }
+      }
+    }
     .swiper-container {
+      .swiper-button-prev {
+        left: 274px;
+      }
       height: 451px;
       img {
         width: 100%;

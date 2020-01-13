@@ -3,9 +3,9 @@
     <div class="nav-topbar">
       <div class="container">
         <div class="topbar-menu">
-          <a href="javascript:;">MiMall</a>
-          <a href="javascript:;">MUI</a>
-          <a href="javascript:;">Cloud Service</a>
+          <a href="javascript:;">INTERNATIONAL</a>
+          <a href="javascript:;">MI COMMUNITY</a>
+          <a href="javascript:;">MIUI</a>
         </div>
         <div class="topbar-user">
           <a href="javascript:;" v-if="username">{{ username }}</a>

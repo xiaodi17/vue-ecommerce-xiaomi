@@ -6,7 +6,16 @@
           <ul class="menu-wrap">
             <li class="menu-item">
               <a href="javascript:;">Mi Phones</a>
-              <div class="children"></div>
+              <div class="children">
+                <ul v-for="(item,i) in menuList" :key="i">
+                  <li v-for="(sub,j) in item" :key="j">
+                    <a :href="sub?'/#/product/'+sub.id:''">
+                      <img :src="sub?sub.img: '/imgs/item-box-1.png'" />
+                      {{sub?sub.name: 'xiaomi 9'}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li class="menu-item">
               <a href="javascript:;">POCOPHONE</a>
@@ -108,6 +117,35 @@ export default {
           id: '',
           img: '/imgs/slider/slide-5.jpg'
         }
+      ],
+      menuList: [
+        [
+          {
+            id: 30,
+            img: '/imgs/item-box-1.png',
+            name: 'XiaomiCC9'
+          },
+          {
+            id: 31,
+            img: '/imgs/item-box-2.png',
+            name: 'Xiaom8 Lite'
+          },
+          {
+            id: 32,
+            img: '/imgs/item-box-3.png',
+            name: 'Redmi K20 Pro'
+          },
+          {
+            id: 33,
+            img: '/imgs/item-box-4.png',
+            name: '4G'
+          }
+        ],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
       ]
     }
   }
@@ -146,6 +184,37 @@ export default {
           }
           &:hover {
             background-color: $colorA;
+          }
+          .children {
+            display: none;
+            width: 962px;
+            height: 451px;
+            background-color: $colorG;
+            position: absolute;
+            top: 0;
+            left: 264px;
+            border: 1px solid $colorH;
+            ul {
+              display: flex;
+              justify-content: space-between;
+              height: 75px;
+              li {
+                height: 75px;
+                line-height: 75px;
+                flex: 1;
+                padding-left: 23px;
+              }
+              a {
+                color: $colorB;
+                font-size: 14px;
+              }
+              img {
+                width: 42px;
+                height: 35px;
+                vertical-align: middle;
+                margin-right: 15px;
+              }
+            }
           }
         }
       }

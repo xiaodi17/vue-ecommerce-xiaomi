@@ -7,50 +7,43 @@
             <li class="menu-item">
               <a href="javascript:;">Mi Phones</a>
               <div class="children">
-                <ul v-for="(item,i) in menuList" :key="i">
-                  <li v-for="(sub,j) in item" :key="j">
-                    <a :href="sub?'/#/product/'+sub.id:''">
-                      <img :src="sub?sub.img: '/imgs/item-box-1.png'" />
-                      {{sub?sub.name: 'xiaomi 9'}}
+                <ul v-for="(item,i) in menuList" v-bind:key="i">
+                  <li v-for="(sub,j) in item" v-bind:key="j">
+                    <a v-bind:href="sub?'/#/product/'+sub.id:''">
+                      <img v-bind:src="sub?sub.img:'/imgs/item-box-1.png'" alt />
+                      {{sub?sub.name:'Xiaomi 9'}}
                     </a>
                   </li>
                 </ul>
               </div>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">POCOPHONE</a>
-              <div class="children"></div>
-            </li>
-            <li class="menu-item">
               <a href="javascript:;">Redmi Phones</a>
-              <div class="children"></div>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">Mi TV</a>
-              <div class="children"></div>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:;">Smart Devices</a>
-              <div class="children"></div>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:;">Electronics Applications</a>
-              <div class="children"></div>
+              <a href="javascript:;">Speaker Earphone</a>
             </li>
             <li class="menu-item">
               <a href="javascript:;">Laptop Computers</a>
-              <div class="children"></div>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Power Adaptor</a>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Smart Devices</a>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">Mi TV</a>
             </li>
             <li class="menu-item">
               <a href="javascript:;">All Products</a>
-              <div class="children"></div>
             </li>
           </ul>
         </div>
-        <swiper :options="swiperOption">
-          <swiper-slide v-for="(item, index) in slideList" :key="index">
-            <a :href="'/#/product/' + item.id">
-              <img :src="item.img" />
+        <swiper v-bind:options="swiperOption">
+          <swiper-slide v-for="(item,index) in slideList" v-bind:key="index">
+            <a v-bind:href="'/#/product/'+item.id">
+              <img v-bind:src="item.img" />
             </a>
           </swiper-slide>
           <!-- Optional controls -->
@@ -71,11 +64,11 @@ import ServiceBar from './../components/ServiceBar'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 export default {
-  name: 'Index',
+  name: 'index',
   components: {
-    ServiceBar,
     swiper,
-    swiperSlide
+    swiperSlide,
+    ServiceBar
   },
   data() {
     return {
@@ -115,7 +108,7 @@ export default {
         },
         {
           id: '',
-          img: '/imgs/slider/slide-5.jpg'
+          img: '/imgs/slider/slide-1.jpg'
         }
       ],
       menuList: [
@@ -123,22 +116,22 @@ export default {
           {
             id: 30,
             img: '/imgs/item-box-1.png',
-            name: 'XiaomiCC9'
+            name: '小米CC9'
           },
           {
             id: 31,
             img: '/imgs/item-box-2.png',
-            name: 'Xiaom8 Lite'
+            name: '小米8青春版'
           },
           {
             id: 32,
-            img: '/imgs/item-box-3.png',
+            img: '/imgs/item-box-3.jpg',
             name: 'Redmi K20 Pro'
           },
           {
             id: 33,
-            img: '/imgs/item-box-4.png',
-            name: '4G'
+            img: '/imgs/item-box-4.jpg',
+            name: '移动4G专区'
           }
         ],
         [0, 0, 0, 0],
@@ -152,8 +145,8 @@ export default {
 }
 </script>
 <style lang="scss">
-@import './../assets/scss/mixin.scss';
 @import './../assets/scss/config.scss';
+@import './../assets/scss/mixin.scss';
 .index {
   .swiper-box {
     .nav-menu {
@@ -161,13 +154,13 @@ export default {
       width: 264px;
       height: 451px;
       z-index: 9;
-      padding: 26px, 0;
+      padding: 26px 0;
       background-color: #55585a7a;
       box-sizing: border-box;
       .menu-wrap {
         .menu-item {
-          height: 55px;
-          line-height: 55px;
+          height: 50px;
+          line-height: 50px;
           a {
             position: relative;
             display: block;
@@ -178,12 +171,15 @@ export default {
               position: absolute;
               right: 30px;
               top: 17.5px;
-              content: '';
+              content: ' ';
               @include bgImg(10px, 15px, '/imgs/icon-arrow.png');
             }
           }
           &:hover {
             background-color: $colorA;
+            .children {
+              display: block;
+            }
           }
           .children {
             display: none;
@@ -220,10 +216,10 @@ export default {
       }
     }
     .swiper-container {
+      height: 451px;
       .swiper-button-prev {
         left: 274px;
       }
-      height: 451px;
       img {
         width: 100%;
         height: 100%;

@@ -75,14 +75,14 @@
           <div class="list-box">
             <div class="list" v-for="(arr,i) in phoneList" :key="i">
               <div class="item" v-for="(item,j) in arr" :key="j">
-                <span>NEW</span>
+                <span :class="{'new-pro':j%2==0}">NEW</span>
                 <div class="item-img">
-                  <img src alt />
+                  <img :src="item.mainImage" />
                 </div>
                 <div class="item-info">
-                  <h3>Xiaomi 9</h3>
-                  <P>855, SONI4800P</P>
-                  <P class="price">2999 RMB</P>
+                  <h3>{{item.name}}</h3>
+                  <P>{{item.subtitle}}</P>
+                  <P class="price">{{item.price}}RMB</P>
                 </div>
               </div>
             </div>
@@ -192,7 +192,24 @@ export default {
           img: '/imgs/ads/ads-4.jpg'
         }
       ],
-      phoneList: [[1, 1, 1, 1], [1, 1, 1, 1]]
+      phoneList: []
+    }
+  },
+  mounted() {
+    this.getData()
+  },
+  methods: {
+    getData() {
+      this.axios
+        .get('/products', {
+          params: {
+            categoryId: 100012,
+            pageSize: 8
+          }
+        })
+        .then(res => {
+          this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
+        })
     }
   }
 }
@@ -324,10 +341,23 @@ export default {
             background-color: $colorG;
             text-align: center;
             span {
+              display: inline-block;
+              width: 67px;
+              height: 24px;
+              font-size: 14px;
+              line-height: 24px;
+              color: $colorG;
+              &.new-pro {
+                background-color: #7ecf68;
+              }
+              &.kill-pro {
+                background-color: #e82626;
+              }
             }
             .item-img {
               img {
                 height: 195px;
+                width: 100%;
               }
             }
             .item-info {

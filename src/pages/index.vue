@@ -91,10 +91,22 @@
       </div>
     </div>
     <service-bar></service-bar>
+    <modal
+      title="Reminder"
+      sureText="View Cart"
+      btnType="1"
+      modalType="middle"
+      v-bind:showModal="true"
+    >
+      <template v-slot:body>
+        <p>Add Item Success</p>
+      </template>
+    </modal>
   </div>
 </template>
 <script>
 import ServiceBar from './../components/ServiceBar'
+import Modal from './../components/Modal'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 export default {
@@ -102,7 +114,8 @@ export default {
   components: {
     swiper,
     swiperSlide,
-    ServiceBar
+    ServiceBar,
+    Modal
   },
   data() {
     return {

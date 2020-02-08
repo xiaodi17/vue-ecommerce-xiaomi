@@ -10,8 +10,10 @@
         <slot name="body"></slot>
       </div>
       <div class="modal-footer">
-        <a href="javascript:;" class="btn">OK</a>
-        <a href="javascript:;" class="btn">Cancel</a>
+        <div class="btn-group">
+          <a href="javascript:;" class="btn">OK</a>
+          <a href="javascript:;" class="btn">Cancel</a>
+        </div>
       </div>
     </div>
   </div>

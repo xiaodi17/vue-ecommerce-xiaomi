@@ -82,7 +82,7 @@
                 <div class="item-info">
                   <h3>{{item.name}}</h3>
                   <P>{{item.subtitle}}</P>
-                  <P class="price">{{item.price}}RMB</P>
+                  <P class="price" @click="addCart(item.id)">{{item.price}}RMB</P>
                 </div>
               </div>
             </div>
@@ -96,7 +96,9 @@
       sureText="View Cart"
       btnType="1"
       modalType="middle"
-      v-bind:showModal="true"
+      v-bind:showModal="showModal"
+      v-on:submit="goToCart"
+      v-on:cancel="showModal=false"
     >
       <template v-slot:body>
         <p>Add Item Success</p>
@@ -205,7 +207,8 @@ export default {
           img: '/imgs/ads/ads-4.jpg'
         }
       ],
-      phoneList: []
+      phoneList: [],
+      showModal: false
     }
   },
   mounted() {
@@ -224,6 +227,22 @@ export default {
           res.list = res.list.slice(6, 14)
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
         })
+    },
+    addCart() {
+      this.showModal = true
+      return
+      // this.axios
+      //   .post('/carts', {
+      //     productId: id,
+      //     selected: true
+      //   })
+      //   .then(() => {})
+      //   .catch(() => {
+      //     this.showModal = true
+      //   })
+    },
+    goToCart() {
+      this.$router.push('/cart')
     }
   }
 }

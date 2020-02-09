@@ -9,24 +9,24 @@
       <div class="container">
         <div class="login-form">
           <h3>
-            <span class="checked">帐号登录</span>
+            <span class="checked">Login</span>
             <span class="sep-line">|</span>
-            <span>扫码登录</span>
+            <span>QR Code</span>
           </h3>
           <div class="input">
-            <input type="text" placeholder="请输入帐号" v-model="username" />
+            <input type="text" placeholder="Enter Username" v-model="username" />
           </div>
           <div class="input">
-            <input type="password" placeholder="请输入密码" v-model="password" />
+            <input type="password" placeholder="Enter Password" v-model="password" />
           </div>
           <div class="btn-box">
-            <a href="javascript:;" class="btn" @click="login">登录</a>
+            <a href="javascript:;" class="btn" @click="login">Log in</a>
           </div>
           <div class="tips">
-            <div class="sms" @click="register">手机短信登录/注册</div>
+            <div class="sms" @click="register">Wechat</div>
             <div class="reg">
-              立即注册
-              <span>|</span>忘记密码？
+              Sign up
+              <span>|</span>Forgot password?
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default {
         })
         .then(res => {
           this.$cookie.set('userId', res.id, { expires: '1M' })
-          // to-do 保存用户名
+          // to-do save username
           this.$router.push('/index')
         })
     },
@@ -81,7 +81,7 @@ export default {
           email: 'admin1@163.com'
         })
         .then(() => {
-          alert('注册成功')
+          alert('Sign up Successful')
         })
     }
   }

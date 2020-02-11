@@ -12,7 +12,22 @@ export default {
   data() {
     return {}
   },
-  mounted() {}
+  mounted() {
+    this.getUser()
+    this.getCartCount()
+  },
+  methods: {
+    getUser() {
+      this.axios.get('/user').then(() => {
+        //todo save in vuex
+      })
+    },
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then(() => {
+        //todo save in vuex
+      })
+    }
+  }
 }
 </script>
 

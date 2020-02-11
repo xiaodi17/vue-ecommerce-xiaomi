@@ -13,7 +13,7 @@
           <a href="javascript:;" v-if="!username">SIGN UP</a>
           <a href="javascript:;" v-if="username">My Order</a>
           <a href="javascript:;" class="my-cart" @click="goToCart">
-            <span class="icon-cart"></span>Shopping Cart
+            <span class="icon-cart"></span>Cart
           </a>
         </div>
       </div>

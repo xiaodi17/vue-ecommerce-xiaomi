@@ -4,9 +4,7 @@ Use Vue.js to mimic XiaoMi E-commerce webiste
 
 ## Project setup
 
-```
-npm install
-```
+```npm install```
 
 ### Compiles and hot-reloads for development
 
